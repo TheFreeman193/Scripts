@@ -1,9 +1,9 @@
 [{000214A0-0000-0000-C000-000000000046}]
 Prop3=19,11
 [DEFAULT]
-BASEURL=https://www.gnu.org/licenses/gpl.txt
-ORIGURL=https://www.gnu.org/licenses/gpl-3.0.txt
+BASEURL=https://opensource.org/licenses/MIT
+ORIGURL=https://opensource.org/licenses/MIT
 [InternetShortcut]
-URL=https://www.gnu.org/licenses/gpl.txt
-IconFile=https://www.gnu.org/favicon.ico
+URL=https://opensource.org/licenses/MIT
+IconFile=https://opensource.org/favicon.ico
 IconIndex=1
