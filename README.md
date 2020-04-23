@@ -1,4 +1,4 @@
-# Scripts
+# About *Scripts*
 
 [![License](./LICENSE.svg)][license] [![Code of Conduct](./CONTRIBUTING.svg)][conduct]
 
@@ -9,11 +9,15 @@ A compilation of scripts borne of a programmer's worst enemy and best friend; __
 The files here are more polished versions of various scripts I have written.
 Some of them might not work for you, but the vast majority are generic for language in which they are written.
 
+## Why it's here
+
+The scripts included here are for reference, use in snippets, and educational purposes. Every developer does things a little differently, and looking at others' approaches is a valuable source of learning.
+
 ## Using these scripts in your source
 
-These scripts are all released under the [GNU General Public License][license]. This means the [latest][latest_license] GNU GPL applies to them, which is currently the [GPLv3][gnugplv3].
+These scripts are all released under the [MIT License][license].
 
-The tl;dr of this is that you're permitted to use and modify my code, provided you reference me wherever you use it, and don't use it in proprietary software ([Contact me][email] to obtain permission for this).
+The tl;dr of this is that you're permitted to use and modify my code, provided you reference me wherever you use it. You can even use it in proprietary software (I would very grateful if you [drop me an email][email] to let me know in such cases).
 
 ## Contributing
 
@@ -26,7 +30,7 @@ Remember, we are a *community*.
 
 ## Experimental scripts
 
-I also [keep a collection][script_dump] of much less-polished scripts, which is more for inspiration and education purposes. You can find it [here][script_dump].
+I also [keep a collection][script_dump] of much less-polished scripts, which is more for inspiration and education purposes.
 
 [script_dump]: https://github.com/TheFreeman193/script_dump
 [pulls]: https://github.com/TheFreeman193/Scripts/pulls
