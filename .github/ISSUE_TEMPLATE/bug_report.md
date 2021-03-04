@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help improve a script
 title: '[BUG] <Describe your bug in 20 words or less>'
-labels: 'bug', 'awaiting confirmation'
+labels: 'bug, awaiting confirmation'
 assignees: TheFreeman193
 
 ---

@@ -2,7 +2,7 @@
 name: Question
 about: Ask any questions that can't be answered by reading the help documentation for a script.
 title: '[QUESTION] <Describe your question in 20 words or less>'
-labels: 'question', 'awaiting confirmation'
+labels: 'question, awaiting confirmation'
 assignees: ''
 
 ---
