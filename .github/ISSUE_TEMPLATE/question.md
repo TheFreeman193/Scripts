@@ -1,6 +1,7 @@
 ---
 name: 'Question'
-about: 'Ask a question that isn't answered in the help documentation for a script.'
+about: >
+    Ask a question that isn't answered in the help documentation for a script.
 title: '[QUESTION] <Describe your question in 20 words or less>'
 labels: 'question, awaiting confirmation'
 assignees: ''

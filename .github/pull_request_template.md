@@ -1,10 +1,3 @@
----
-name: 'Standard pull request'
-title: '<Describe the feature/bug fix in 20 words or less>'
-labels: 'needs review'
-assignees: ''
----
-
 <!-- Leave the ## Headings, --- dividers, and - [x] checkboxes in place; replace each paragraph with requested info -->
 ## Which script?
 

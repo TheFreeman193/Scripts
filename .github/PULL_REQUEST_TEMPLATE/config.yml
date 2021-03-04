@@ -1,0 +1,7 @@
+contact_links:
+  - name: 'Bug Fix'
+    url: 'https://github.com/TheFreeman193/Scripts/compare?template=pull_bugfix.md'
+    about: 'Create a bug fix pull request for a script'
+  - name: 'Feature'
+    url: 'https://github.com/TheFreeman193/Scripts/compare?template=pull_feature.md'
+    about: 'Create a pull request that improves or adds a feature to a script'

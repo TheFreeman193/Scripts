@@ -1,10 +1,4 @@
----
-name: 'Bug Fix'
-about: 'A pull request that fixes a bug in a script'
-title: '[BUG FIX] <Describe the fix in 20 words or less>'
-labels: 'fix, needs review, high priority'
-assignees: ''
----
+# Bug fix
 
 <!-- Leave the ## Headings, --- dividers, and - [x] checkboxes in place; replace each paragraph with requested info -->
 ## Which script?

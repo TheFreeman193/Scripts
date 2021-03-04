@@ -1,10 +1,4 @@
----
-name: 'Feature'
-about: 'A pull request for a new feature or improvement to a script'
-title: '[FEATURE] <Describe the feature in 20 words or less>'
-labels: 'enhancement, needs review'
-assignees: ''
----
+# Feature
 
 <!-- Leave the ## Headings, --- dividers, and - [x] checkboxes in place; replace each paragraph with requested info -->
 ## Which script?
