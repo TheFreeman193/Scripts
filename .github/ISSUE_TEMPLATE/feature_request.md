@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Suggest a new feature for or change to an existing script
+name: 'Feature request'
+about: 'Suggest a new feature for or change to an existing script'
 title: '[REQUEST] <Describe the feature in 20 words or less>'
 labels: 'enhancement'
 assignees: ''
