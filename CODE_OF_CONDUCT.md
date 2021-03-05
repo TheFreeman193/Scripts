@@ -116,6 +116,8 @@ the community.
 
 ## Attribution
 
+![Contributor Covenant 2.0][img conduct]
+
 This Code of Conduct is adapted from the **[Contributor Covenant][cc site]**,
 version 2.0, available **[here][cc2]**.
 
@@ -125,10 +127,11 @@ enforcement ladder][mozilla coc]**.
 For answers to common questions about this code of conduct, see the FAQ
 **[here][cc faq]**. Translations are available **[here][cc translate]**.
 
-[email]: mailto:thefreeman193@aol.co.uk
-[github report]: https://github.com/contact/report-abuse
-[cc site]: https://www.contributor-covenant.org
-[cc faq]: https://www.contributor-covenant.org/faq
-[cc translate]: https://www.contributor-covenant.org/translations
-[cc2]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
-[mozilla coc]: https://github.com/mozilla/diversity
+[email]: mailto:thefreeman193@aol.co.uk "thefreeman193@aol.co.uk"
+[github report]: https://github.com/contact/report-abuse "Report Abuse"
+[cc site]: https://www.contributor-covenant.org "Contributor Covenant"
+[cc faq]: https://www.contributor-covenant.org/faq  "Contributor Covenant FAQ"
+[cc translate]: https://www.contributor-covenant.org/translations "Contributor Covenant Translations"
+[cc2]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html "Contributor Covenant 2.0"
+[mozilla coc]: https://github.com/mozilla/diversity "Diversity & Inclusion in Open Source"
+[img conduct]: ./CONTRIBUTING.svg "Contributor Covenant 2.0"
