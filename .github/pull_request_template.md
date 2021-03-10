@@ -67,7 +67,7 @@ If applicable, add screenshots to help explain what this change will do. These c
 ## Additional notes
 
 <!-- 5 Replace below here 5 -->
-Add any other context or relevant information here. This includes technical details, security considerations, and attributions for code included that was written by others (third-party). Any attributions must also be in the code as comments or in comment-based help. Any third-party code must be in the public domain or have a license compatible with the [MIT license](./LICENSE "MIT License"), and this license should be included. Submissions with third-party code will be considered on a case-by-case basis.
+Add any other context or relevant information here. This includes technical details, security considerations, and attributions for code included that was written by others (third-party). Any attributions must also be in the code as comments or in comment-based help. Any third-party code must be in the public domain or have a license compatible with the [MIT license](../LICENSE.md "MIT License"), and this license should be included. Submissions with third-party code will be considered on a case-by-case basis.
 <!-- 5 Replace above here 5 -->
 
 ---

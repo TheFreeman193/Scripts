@@ -38,8 +38,8 @@ useful guidance for writing a helpful issue.
 
 ## Pull requests
 
-[![License](./LICENSE.svg)][license]
-[![CC BY-SA 4.0](./LICENSE_ASSETS.svg)][ccbysa4]
+[![License](./BADGE_MIT.svg)][license]
+[![CC BY-SA 4.0](./BADGE_CCBYSA4.svg)][ccbysa4]
 
 ### Creation
 
@@ -85,7 +85,7 @@ The repository does not currently require [GPG][gpg] commit
 [github report]: https://github.com/contact/report-abuse "Report Abuse"
 [new issue]: https://github.com/TheFreeman193/Scripts/issues/new/choose "Create an Issue"
 [pulls]: https://github.com/TheFreeman193/Scripts/pulls "Pull Requests"
-[license]: ./LICENSE "MIT License"
+[license]: ./LICENSE.md "MIT License"
 [ccbysa4]: http://creativecommons.org/licenses/by-sa/4.0/ "Creative Commons Share-Alike Attribution 4.0"
 [java style]: https://www.cs.cornell.edu/courses/JavaAndDS/JavaStyle.html "Java Style Guide"
 [pwsh style]: https://poshcode.gitbooks.io/powershell-practice-and-style/content/ "PowerShell Best Practices and Style"
