@@ -1,5 +1,5 @@
 <!-- Delete as appropriate here, ensuring you keep the # at the start -->
-# FEATURE REQUEST | BUG REPORT
+# FEATURE | BUG FIX
 
 <!-- Leave other ## Headings, --- dividers, and - [ ] checkboxes in place; replace each paragraph with requested info. There are 6 sections -->
 ## Which script?
