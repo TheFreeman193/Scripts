@@ -45,7 +45,7 @@ If applicable, add screenshots to help explain what this feature will do. These 
 
 ## Additional notes
 
-Add any other context or relevant information here. This includes technical details, security considerations, and attributions for code included that was written by others (third-party). Any attributions must also be in the code as comments or in comment-based help. Any third-party code must be in the public domain or have a license compatible with the [MIT license][license], and this license should be included. Submissions with third-party code will be considered on a case-by-case basis.
+Add any other context or relevant information here. This includes technical details, security considerations, and attributions for code included that was written by others (third-party). Any attributions must also be in the code as comments or in comment-based help. Any third-party code must be in the public domain or have a license compatible with the [MIT license](../../LICENSE.md "MIT License"), and this license should be included. Submissions with third-party code will be considered on a case-by-case basis.
 
 ---
 
@@ -63,5 +63,3 @@ Make sure you fulfill each of the following requirements. The *ready for merge* 
 ### Ready for merge
 
 - [ ] Pull request is not a WIP and is **ready for merge**.
-
-[license]: ./LICENSE "MIT License"

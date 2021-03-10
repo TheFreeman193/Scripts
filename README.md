@@ -45,14 +45,14 @@ Please adhere to the [**code of conduct**][conduct] which is adapted from the
 
 Any non-source code assets included in this repository are licensed under [Creative
 Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)][ccbysa4]. This
-includes but is not limited to, images, audio, and video.
+includes but is not limited to, images, audio, video, and documentation.
 
 ## Experimental scripts
 
 I also [keep a collection][script_dump] of much less-polished scripts, which
 primarily exists for inspiration, education, and amusement.
 
-[license]: ./LICENSE "MIT License"
+[license]: ./LICENSE.md "MIT License"
 [conduct]: ./CODE_OF_CONDUCT.md "Code of Conduct"
 [tldr]: https://en.wiktionary.org/wiki/tl;dr "Too long, didn't read"
 [email]: mailto:thefreeman193@aol.co.uk "thefreeman193@aol.co.uk"
@@ -60,6 +60,6 @@ primarily exists for inspiration, education, and amusement.
 [latest_conduct]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html "Contributor Covenant 2.0"
 [ccbysa4]: http://creativecommons.org/licenses/by-sa/4.0/ "Creative Commons Share-Alike Attribution 4.0"
 [script_dump]: https://github.com/TheFreeman193/script_dump "Script Dump"
-[img license]: ./LICENSE.svg "MIT License"
-[img ccbysa4]: ./LICENSE_ASSETS.svg "CC BY-SA 4.0"
+[img license]: ./BADGE_MIT.svg "MIT License"
+[img ccbysa4]: ./BADGE_CCBYSA4.svg "CC BY-SA 4.0"
 [img conduct]: ./CONTRIBUTING.svg "Contributor Covenant 2.0"
