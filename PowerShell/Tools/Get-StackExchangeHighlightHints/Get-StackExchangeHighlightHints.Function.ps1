@@ -1,5 +1,24 @@
 #Requires -Version 2.0
 
+data LocalizedResources {
+    # Default values
+    @{
+        Err_CouldNotGetData   = 'Unable to get data from "{0}"'
+        Err_InvalidDataFrom   = 'Invalid data received from "{0}"'
+        DownloadingScript     = 'Downloading highlightJS file from "{0}"'
+        SearchingHints        = 'Searching highlightJS file for language hints'
+        SearchingHintsAliases = 'Searching highlightJS file for language hints with aliases'
+    }
+}
+$PS5OrLater = $PSVersionTable.PSVersion -ge '5.0'
+$IgnoreAction = if ($PS5OrLater) { 'Ignore' } else { 'SilentlyContinue' }
+$LocalizeOpts = @{
+    BindingVariable = 'LocalizedResources'
+    FileName        = 'StackExchangeHighlightHints_Lang'
+    ErrorAction     = $IgnoreAction
+}
+Microsoft.PowerShell.Utility\Import-LocalizedData @LocalizeOpts
+
 function Get-StackExchangeHighlightHints {
     <#
     .SYNOPSIS
@@ -16,7 +35,7 @@ function Get-StackExchangeHighlightHints {
     e.g. "en" for English. Currently supported StackExchange website languages are
     English (en), Spanish (es), Japanese (ja), and Russian (ru).
 
-    .PARAMETER UseHTTP
+    .PARAMETER Http
     Causes the script to use HTTP to download the highlightJS data.
 
     .INPUTS
@@ -44,7 +63,7 @@ function Get-StackExchangeHighlightHints {
     StackExchange website.
 
     .EXAMPLE
-    PS> 'en','ja' | Get-StackExchangeHighlightHints -UseHTTP |
+    PS> 'en','ja' | Get-StackExchangeHighlightHints -Http |
         Format-Table -GroupBy Language
 
     Gets the syntax highlighting hints supported by the English (en) and
@@ -56,15 +75,18 @@ function Get-StackExchangeHighlightHints {
     comment, append it to the opening code fences, e.g. for C# highlighting:
 
     ```lang-cs
-    [DllImport("shlwapi.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
-    private static extern int SHLoadIndirectString(string pszSource, StringBuilder pszOutBuf, int cchOutBuf, IntPtr ppvReserved);
+    Console.WriteLine(@"Hello {0}!", "World")
     ```
 
     .LINK
-    https://github.com/TheFreeman193/Scripts/blob/master/PowerShell/Functions/Get-StackExchangeHighlightHints.Function.ps1
+    https://github.com/TheFreeman193/Scripts/blob/master/PowerShell/Tools/Get-StackExchangeHighlightHints/Get-StackExchangeHighlightHints.Function.ps1
+
+    .LINK
+    License: https://github.com/TheFreeman193/Scripts/blob/master/LICENSE.md
     #>
+
     [CmdletBinding(ConfirmImpact = 'None')]
-    [Alias('Get-SEHighlightHints', 'Get-StackOverflowHighlightHints', 'Get-SOHighlightHints')]
+    [Alias('gsehh', 'Get-StackOverflowHighlightHints', 'gsohh')]
     param(
         [Parameter(Position = 0, ValueFromPipeline = $true)]
         [ValidateSet('en', 'es', 'ja', 'ru')]
@@ -73,7 +95,7 @@ function Get-StackExchangeHighlightHints {
 
         [Parameter()]
         [switch]
-        $UseHTTP
+        $Http
     )
     begin {
         $commonPrefix = 'hljs\.registerLanguage\([''"](?<hint>[^''"]+?)[''"],.+?return\s?\{\s*?[''"]?name[''"]?:\s?[''"]'
@@ -92,30 +114,34 @@ function Get-StackExchangeHighlightHints {
         $WebClient = New-Object System.Net.WebClient
     }
     process {
-        $Protocol = if ($UseHTTP) { 'http' } else { 'https' }
+        $Protocol = if ($Http) { 'http' } else { 'https' }
         $SOHighlightLoaderURI = "{0}://dev.sstatic.net/js/highlightjs-loader.{1}.js" -f $Protocol, $Language
 
         #region Download Data
-        Write-Verbose "Downloading highlightJS script from $SOHighlightLoaderURI"
+        Write-Verbose ($LocalizedResources.DownloadingScript -f $SOHighlightLoaderURI)
         $RawData = $WebClient.DownloadData($SOHighlightLoaderURI)
         #endregion
 
         #region Search Data
         if ($null -eq $RawData -or $RawData.Count -lt 100000) {
             Write-Error -Exception (
-                New-Object System.Net.WebException "Unable to get data from $SOHighlightLoaderURI"
+                New-Object System.Net.WebException (
+                    $LocalizedResources.Err_CouldNotGetData -f $SOHighlightLoaderURI
+                )
             )
+            return
         }
         $SOHighlightLoader = [System.Text.Encoding]::UTF8.GetString($RawData)
 
-        Write-Verbose "Searching highlightJS-loader for language hints"
+        Write-Verbose $LocalizedResources.SearchingHints
         $MatchRes = $HighlightMatch.Matches($SOHighlightLoader)
 
         if ($null -eq $MatchRes -or $MatchRes.Count -lt 1) {
-            Write-Error -Message "Invalid data received from $SOHighlightLoaderURI"
+            Write-Error -Message ($LocalizedResources.Err_InvalidDataFrom -f $SOHighlightLoaderURI)
+            return
         }
 
-        Write-Verbose "Searching highlightJS-loader for language hints with aliases"
+        Write-Verbose $LocalizedResources.SearchingHintsAliases
         $MatchResWAlias = $HighlightMatchWAlias.Matches($SOHighlightLoader)
 
         $HintsWAlias = @{}
