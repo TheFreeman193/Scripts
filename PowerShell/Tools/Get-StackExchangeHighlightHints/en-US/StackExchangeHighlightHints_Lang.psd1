@@ -1,8 +1,9 @@
 ConvertFrom-StringData @'
 ### en-US # English, US
-Err_CouldNotGetData=Unable to get data from "{0}"
-Err_InvalidDataFrom=Invalid data received from "{0}"
-DownloadingScript=Downloading highlightJS file from "{0}"
-SearchingHints=Searching highlightJS file for language hints
-SearchingHintsAliases=Searching highlightJS file for language hints with aliases
+DEBUG_Imported                = English, US localized resources imported
+ERROR_CouldNotGetData         = Unable to get data from "{0}"
+ERROR_InvalidDataFrom         = Invalid data received from "{0}"
+VERBOSE_DownloadingScript     = Downloading highlightJS file from "{0}"
+VERBOSE_SearchingHints        = Searching highlightJS file for language hints
+VERBOSE_SearchingHintsAliases = Searching highlightJS file for language hints with aliases
 '@

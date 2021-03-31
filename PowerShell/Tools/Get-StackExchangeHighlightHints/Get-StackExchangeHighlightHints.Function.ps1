@@ -1,24 +1,3 @@
-#Requires -Version 2.0
-
-data LocalizedResources {
-    # Default values
-    @{
-        Err_CouldNotGetData   = 'Unable to get data from "{0}"'
-        Err_InvalidDataFrom   = 'Invalid data received from "{0}"'
-        DownloadingScript     = 'Downloading highlightJS file from "{0}"'
-        SearchingHints        = 'Searching highlightJS file for language hints'
-        SearchingHintsAliases = 'Searching highlightJS file for language hints with aliases'
-    }
-}
-$PS5OrLater = $PSVersionTable.PSVersion -ge '5.0'
-$IgnoreAction = if ($PS5OrLater) { 'Ignore' } else { 'SilentlyContinue' }
-$LocalizeOpts = @{
-    BindingVariable = 'LocalizedResources'
-    FileName        = 'StackExchangeHighlightHints_Lang'
-    ErrorAction     = $IgnoreAction
-}
-Microsoft.PowerShell.Utility\Import-LocalizedData @LocalizeOpts
-
 function Get-StackExchangeHighlightHints {
     <#
     .SYNOPSIS
@@ -85,6 +64,7 @@ function Get-StackExchangeHighlightHints {
     License: https://github.com/TheFreeman193/Scripts/blob/master/LICENSE.md
     #>
 
+    #Requires -Version 2.0
     [CmdletBinding(ConfirmImpact = 'None')]
     [Alias('gsehh', 'Get-StackOverflowHighlightHints', 'gsohh')]
     param(
@@ -98,6 +78,37 @@ function Get-StackExchangeHighlightHints {
         $Http
     )
     begin {
+        $PS5OrLater = $PSVersionTable.PSVersion -ge '5.0'
+        $IgnoreAction = if ($PS5OrLater) { 'Ignore' } else { 'SilentlyContinue' }
+        if ($null -eq $StackExchangeHighlightHints_LocalStrings) {
+            $LocalizeOpts = @{
+                FileName    = 'StackExchangeHighlightHints_Lang'
+                ErrorAction = $IgnoreAction
+            }
+            if ($PS5OrLater) {
+                $global:StackExchangeHighlightHints_LocalStrings =
+                Microsoft.PowerShell.Utility\Import-LocalizedData @LocalizeOpts
+            }
+            else {
+                $LocalizeOpts['BindingVariable'] = 'StackExchangeHighlightHints_LocalStrings'
+                Microsoft.PowerShell.Utility\Import-LocalizedData @LocalizeOpts
+            }
+            if (-not $?) {
+                $global:StackExchangeHighlightHints_LocalStrings = data {
+                    # Default values
+                    @{
+                        DEBUG_Imported                = 'Using default (en) resources'
+                        ERROR_CouldNotGetData         = 'Unable to get data from "{0}"'
+                        ERROR_InvalidDataFrom         = 'Invalid data received from "{0}"'
+                        VERBOSE_DownloadingScript     = 'Downloading highlightJS file from "{0}"'
+                        VERBOSE_SearchingHints        = 'Searching highlightJS file for language hints'
+                        VERBOSE_SearchingHintsAliases = 'Searching highlightJS file for language hints with aliases'
+                    }
+                }
+            }
+            Write-Debug $StackExchangeHighlightHints_LocalStrings.DEBUG_Imported
+        }
+
         $commonPrefix = 'hljs\.registerLanguage\([''"](?<hint>[^''"]+?)[''"],.+?return\s?\{\s*?[''"]?name[''"]?:\s?[''"]'
         $HighlightJsPattern = '{0}(?<fname>[^''"]+?)[''"],' -f $commonPrefix
         $HighlightJsPatternWAlias = '{0}.+?[''"],.+?aliases[''"]?:\s?\[(?<alias>[^\]]+?)\],' -f $commonPrefix
@@ -118,35 +129,48 @@ function Get-StackExchangeHighlightHints {
         $SOHighlightLoaderURI = "{0}://dev.sstatic.net/js/highlightjs-loader.{1}.js" -f $Protocol, $Language
 
         #region Download Data
-        Write-Verbose ($LocalizedResources.DownloadingScript -f $SOHighlightLoaderURI)
+        Write-Verbose ($StackExchangeHighlightHints_LocalStrings.VERBOSE_DownloadingScript -f $SOHighlightLoaderURI)
         $RawData = $WebClient.DownloadData($SOHighlightLoaderURI)
         #endregion
 
         #region Search Data
         if ($null -eq $RawData -or $RawData.Count -lt 100000) {
-            Write-Error -Exception (
-                New-Object System.Net.WebException (
-                    $LocalizedResources.Err_CouldNotGetData -f $SOHighlightLoaderURI
-                )
+            $Record = New-Object System.Management.Automation.ErrorRecord @(
+                (New-Object System.Net.WebException (
+                        $StackExchangeHighlightHints_LocalStrings.ERROR_CouldNotGetData -f $SOHighlightLoaderURI
+                    )),
+                'CouldNotGetData',
+                'ResourceUnavailable'
+                $SOHighlightLoaderURI
             )
+            $PSCmdlet.WriteError($Record)
             return
         }
         $SOHighlightLoader = [System.Text.Encoding]::UTF8.GetString($RawData)
 
-        Write-Verbose $LocalizedResources.SearchingHints
+        Write-Verbose $StackExchangeHighlightHints_LocalStrings.VERBOSE_SearchingHints
         $MatchRes = $HighlightMatch.Matches($SOHighlightLoader)
 
         if ($null -eq $MatchRes -or $MatchRes.Count -lt 1) {
-            Write-Error -Message ($LocalizedResources.Err_InvalidDataFrom -f $SOHighlightLoaderURI)
+            $Record = New-Object System.Management.Automation.ErrorRecord @(
+                (New-Object System.IO.InvalidDataException (
+                        $StackExchangeHighlightHints_LocalStrings.ERROR_InvalidDataFrom -f $SOHighlightLoaderURI
+                    )),
+                'InvalidHighlightData',
+                'InvalidData'
+                $SOHighlightLoader
+            )
+            $PSCmdlet.WriteError($Record)
             return
         }
 
-        Write-Verbose $LocalizedResources.SearchingHintsAliases
+        Write-Verbose $StackExchangeHighlightHints_LocalStrings.VERBOSE_SearchingHintsAliases
         $MatchResWAlias = $HighlightMatchWAlias.Matches($SOHighlightLoader)
 
         $HintsWAlias = @{}
         foreach ($aliasMatch in $MatchResWAlias) {
-            $HintsWAlias[$aliasMatch.Groups['hint'].Value] = $ListSepConsistencyRep.Replace($aliasMatch.Groups['alias'].Value, "', '")
+            $HintsWAlias[$aliasMatch.Groups['hint'].Value] =
+            $ListSepConsistencyRep.Replace($aliasMatch.Groups['alias'].Value, "', '")
         }
         #endregion
 
