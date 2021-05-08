@@ -57,10 +57,10 @@ Console.WriteLine(@"Hello {0}!", "World")
 ```
 
 .LINK
-https://github.com/TheFreeman193/Scripts/blob/master/PowerShell/Tools/Get-StackExchangeHighlightHints/Get-StackExchangeHighlightHints.ps1
+https://github.com/TheFreeman193/Scripts/blob/main/PowerShell/Tools/Get-StackExchangeHighlightHints/Get-StackExchangeHighlightHints.ps1
 
 .LINK
-License: https://github.com/TheFreeman193/Scripts/blob/master/LICENSE.md
+License: https://github.com/TheFreeman193/Scripts/blob/main/LICENSE.md
 #>
 
 #Requires -Version 2.0

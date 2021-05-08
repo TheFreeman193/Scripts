@@ -32,10 +32,10 @@ function Get-GuidMetadata {
     Analysis
 
     .LINK
-    https://github.com/TheFreeman193/Scripts/blob/master/PowerShell/Tools/Get-GuidMetadata/Get-GuidMetadata.Function.ps1
+    https://github.com/TheFreeman193/Scripts/blob/main/PowerShell/Tools/Get-GuidMetadata/Get-GuidMetadata.Function.ps1
 
     .LINK
-    License: https://github.com/TheFreeman193/Scripts/blob/master/LICENSE.md
+    License: https://github.com/TheFreeman193/Scripts/blob/main/LICENSE.md
 
     .EXAMPLE
     PS> New-Guid | Get-GuidMetadata

@@ -139,10 +139,10 @@ Get-RelativeDifference supports 7 common functions for the denominator:
 Mathematics
 
 .LINK
-https://github.com/TheFreeman193/Scripts/blob/master/PowerShell/Tools/Get-RelativeDifference/Get-RelativeDifference.ps1
+https://github.com/TheFreeman193/Scripts/blob/main/PowerShell/Tools/Get-RelativeDifference/Get-RelativeDifference.ps1
 
 .LINK
-License: https://github.com/TheFreeman193/Scripts/blob/master/LICENSE.md
+License: https://github.com/TheFreeman193/Scripts/blob/main/LICENSE.md
 
 .LINK
 Relative difference on Wikipedia: https://en.wikipedia.org/wiki/Relative_change_and_difference#Formulae
